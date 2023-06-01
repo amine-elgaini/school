@@ -1,0 +1,74 @@
+/* Start Global Rules */
+* {
+  letter-spacing: 1.4px;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+}
+/* End Global Rules */
+
+
+/* Start nav */
+header {
+  min-height: 80px;
+}
+
+header a.logo {
+  width: 60px;
+}
+
+/* End nav */
+
+
+/* Start Home */
+.home .landing {
+  min-height: calc(100vh - 80px);
+}
+
+.home .landing .text {
+  max-width: 500px;
+}
+
+.home .landing img {
+  width: 450px;
+}
+/* End Home */
+
+
+/* Start Cover */
+.cover .background {
+  position: fixed;
+  background-image: url("./../imgs/school_background.jpg");
+  height: 100%;
+  width: 100%;
+  background-position: top 40% center;
+  background-size: cover;
+  color: white;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.cover .background::after{
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: #1f2a30;
+  opacity: .6;
+  z-index: -1;
+}
+/* End Cover */
+
+/* Start Logo */
+.login .logo {
+  width: 80px;
+}
+/* End Logo */
