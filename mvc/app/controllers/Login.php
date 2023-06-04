@@ -1,27 +1,18 @@
 <?php 
 
-/**
- * home class
- */
 class Login
 {
 	use Controller;
 
 	private $data = [];
-	/* 
-	user_id
-	username
-	name
-	email
-	password
-	groupe_id
-	register_date
-	user_img
-	work
-	*/
-	public function index()
-	{
-		$user = new User();
+	public function index() {
+		// redirect if loged in
+		if (isset($_SESSION['username'])) {
+			header('Location: ' . ROOT . '/home');
+			exit();
+		}
+
+		$user = new LoginM();
 		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$user->login($_POST);
     }

@@ -23,7 +23,7 @@
             <div class="the_test card shadow-lg">
 
               <div class="<?=isset($data['note'])?'d-none':null?> card-header d-flex justify-content-between fw-bold">
-                <div>Category: <span class="text-primary category"><?=$this->data['subject']?></span></div>
+                <div>Category: <span class="text-primary category"><?=$data['subject']?></span></div>
                 |
                 <div>Questions Num: <span class="text-primary question_num">?</span></div>
               </div> 
@@ -40,11 +40,7 @@
               
               <div class="<?=isset($data['note'])?'d-none':null?> card-footer d-flex justify-content-between align-items-center">
                 <!-- This erea it will be just Finished questions and resul  -->
-                <?php
-                if (!isset($data['note'])) {
-                  echo '<button class="start ms-auto btn btn-primary">Start</button>';
-                }
-                ?>
+                <button class="start ms-auto btn btn-primary">Start</button>
               </div>
             </div>
           </div>

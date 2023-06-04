@@ -37,13 +37,9 @@
           <div class="col-lg-6 col-md-8 mx-auto">
             <h1 class="fw-light">JAVASCRIPT FUNDAMENTAL</h1>
             <p class="lead text-body-secondary">
-            <!-- Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it entirely. -->
-            From [1-30] you will learn fundamentals like (variables, function...), after that there's advanced concept like (api, promis, asychronos...)
+              From [1-30] you will learn fundamentals like (variables, function...), after that there's advanced concept like (api, promis, asychronos...)
             </p>
-            <p>
-              <a href="./qcm" class="btn btn-primary my-2">MCQ On Javascript</a>
-              <a href="./exercises" class="btn btn-secondary my-2">exercises On Javascript</a>
-            </p>
+            <a href="./exercises" class="fs-5 btn btn-success my-2">exercises On Javascript</a>
           </div>
         </div>
       </section>
@@ -62,7 +58,7 @@
                 <div class="card-body">
                   <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                   <div class="d-flex justify-content-between align-items-center">
-                    <a class="btn btn-sm btn-outline-secondary" href="<?=fgets($cours)?>">cour: <?=$num++?></a>
+                    <a class="btn btn-sm btn-outline-success fw-bold" href="<?=fgets($cours)?>">cour: <?=$num++?></a>
                     <small class="text-body-secondary"><?=rand(20, 25)?>min</small>
                   </div>
                 </div>

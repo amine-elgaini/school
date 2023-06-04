@@ -7,7 +7,6 @@ Trait Controller
 	public function view($name, $data = []) {
 		$filename = "../app/views/".$name.".view.php";
 		$page_name = $name;
-
 		require file_exists($filename) ? $filename : "../app/views/404.view.php";//body
 		$footer_page = ['home', 'cours', 'rank'];
 		if (in_array($page_name, $footer_page)) {

@@ -9,21 +9,20 @@ class Exercises
 
 	public function index()
 	{
-		$note = new Notes;
-		$res = $note->selectInfo('note', 'notes', ['user_id'=>$_SESSION['user_id'], 'subject'=>$this->subject], [], 'fetch');
+		$result = new ResultM;
 		$this->data['subject'] = $this->subject;
-		
-		//if already exist
-		if (isset($res['note'])) {
-			$this->data['note'] = $res['note'];
+
+		$result->getNote($this->data);
+
+		if (isset($result->result['result'])) {
+			$this->data['note'] = $result->result['result'];
+			
+		} elseif ($_SERVER['REQUEST_METHOD'] == 'POST' && !isset($result->result['result'])) {
+			$result->setNote($_POST['note'], $this->subject);
+			$result->getNote($this->data);
+			$this->data['note'] = $result->result['result'];
 		}
-		
-		//if not exist
-		if ($_SERVER['REQUEST_METHOD'] == 'POST' && !$res) {
-			$this->data['subject'] = $this->subject;
-			$this->data['note'] = $_POST['note'];
-			$note->addNote($this->data);
-		}
+
 		$this->view('exercises', $this->data);
 	}
 }

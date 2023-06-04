@@ -2,13 +2,10 @@
 Trait Model {
 	use Database;
 
-  function selectInfo($field, $table, array $conditions=[], array $notConditions=[], $action='fetchAll') {
-
+  function selectInfo($field, $table, array $conditions=[], array $notConditions=[], $action='fetchAll', $order='') {
     $where = $this->whereHandling($conditions, $notConditions);
-    $stm = "SELECT $field FROM $table $where";
-    
+    $stm = "SELECT $field FROM $table $where $order";
     $values = array_merge(array_values($conditions), array_values($notConditions));
-
     $res = $this->query_info($stm, $values, $action);
 
     // Retrun Result
@@ -23,9 +20,7 @@ Trait Model {
 
     $where = $this->whereHandling($conditions, $notConditions);
     $stm = "UPDATE $table SET $set $where";
-
     $values = array_merge(array_values($updates), array_values($conditions), array_values($notConditions));
-
     $res = $this->query_execute($stm, $values);
     return $res;
   }
@@ -36,6 +31,15 @@ Trait Model {
     $prep = array_map(fn ($prep) => '?', $values);
     $prep = join(', ', $prep);
     $stm = "INSERT INTO $table($keys) VALUES($prep)";
+    $res = $this->query_execute($stm, $values);
+    return $res;
+  }
+
+  function deleteInfo($table, array $conditions=[], $notConditions=[]) {
+    
+    $where = $this->whereHandling($conditions, $notConditions);
+    $stm = "DELETE FROM $table $where";
+    $values = array_merge(array_values($conditions), array_values($notConditions));
     $res = $this->query_execute($stm, $values);
     return $res;
   }
@@ -56,6 +60,16 @@ Trait Model {
     }
     
     return $where . $notWhere;
+  }
+
+  function joinTables($field, $join, array $conditions=[], array $notConditions=[], $action='fetchAll', $order='', $limit='') {
+    $where = $this->whereHandling($conditions, $notConditions);
+    $stm = "SELECT $field $join $where $order $limit";
+
+    $values = array_merge(array_values($conditions), array_values($notConditions));
+    $res = $this->query_info($stm, $values, $action);
+    // Retrun Result
+    return $res;
   }
 
 }

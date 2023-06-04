@@ -1,6 +1,7 @@
 /* Start Global Rules */
 * {
   letter-spacing: 1.4px;
+  font-size: 17px;
 }
 
 a {
@@ -18,11 +19,7 @@ img {
 
 
 /* Start nav */
-header {
-  min-height: 80px;
-}
-
-header a.logo {
+.logo {
   width: 60px;
 }
 
@@ -41,31 +38,31 @@ header a.logo {
 .home .landing img {
   width: 450px;
 }
-/* End Home */
 
 
-/* Start Cover */
-.cover .background {
-  position: fixed;
+.home .landing {
+  position: relative;
   background-image: url("./../imgs/school_background.jpg");
-  height: 100%;
-  width: 100%;
   background-position: top 40% center;
   background-size: cover;
   color: white;
-  font-size: 25px;
-  font-weight: bold;
 }
 
-.cover .background::after{
+.home .landing::after{
   content: '';
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   background-color: #1f2a30;
-  opacity: .6;
-  z-index: -1;
+  opacity: .5;
 }
-/* End Cover */
+
+.home .landing .content {
+  z-index: 1;
+}
+/* End Home */
 
 /* Start Logo */
 .login .logo {

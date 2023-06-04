@@ -12,170 +12,169 @@
 </head>
 <body class="home h-100">
   <?php require './../app/views/inc/nav.view.php'?>
-  <section style="background-color: #eee;">
+<section class="position-relative" style="background-color: #eee;">
+  <!-- show If Project Added -->
+  <?php if (isset($data['errors'][0])) :?>
+    <div class="position-fixed z-1 top-0 mt-3 end-0 me-4 opacity-75 toast align-items-center text-bg-danger border-0 fade show" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body">
+          Project Do Not Exist
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+    </div>
+  <?php endif; ?>
+
+  <!-- show If Project Added -->
+  <?php if (isset($data['success'][0])) :?>
+    <div class="position-fixed z-1 top-0 mt-3 end-0 me-4 opacity-75 toast align-items-center text-bg-success border-0 fade show" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body">
+          Project Added
+        </div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+    </div>
+  <?php endif; ?>
   <div class="container py-5">
 
     <div class="row">
-      <div class="col-lg-4">
-        <div class="card mb-4">
-          <div class="card-body text-center">
-            <img src="./uploads/<?=$_SESSION['user_img']??'default_img.png'?>" alt="avatar"
-              class="rounded-circle img-fluid" style="width: 150px;">
-            <h5 class="my-3"><?=$_SESSION['username']?></h5>
-            <p class="text-muted mb-1">Full Stack Developer</p>
-            <p class="text-muted mb-4">Bay Area, San Francisco, CA</p>
-            <div class="d-flex justify-content-center mb-2">
-              <a class="btn btn-primary d-flex align-items-center gap-2" href="<?=ROOT?>/edit"><i class="bi bi-pencil-square"></i>Edit</a>
-              <a class="btn btn-danger ms-1 d-flex align-items-center gap-1" href="<?=ROOT?>/logout"><i class="bi bi-box-arrow-left"></i>Logout</a>
+      <div class="col-lg-6 mb-4">
+        <div class="card">
+          <div class="card-body d-flex align-items-center gap-4">
+            <div class="image pe-2 border-end border-muted">
+              <img src="./uploads/<?=$_SESSION['user_img']??'default_img.png'?>" alt="avatar"
+                class="img-fluid img-thumbnail" style="width: 150px;">
+              <span class="fs-2 fw-bold d-block my-3"><?=$_SESSION['username'] ?? '<i class="bi bi-dash-lg"></i>'?></span>
+              <p class="text-muted fs-5 fw-bold mb-1">Speciality: <?=$data['info']['speciality'] ?? '<i class="bi bi-dash-lg"></i>'?></p>
+            </div>
+            <div class="info flex-grow-1">
+              <h6>Description:</h6>
+              <p class="text-muted">
+                <?=$data['info']['description'] ?? '<i class="bi bi-dash-lg"></i>'?>
+              </p>
             </div>
           </div>
-        </div>
-        <div class="card mb-4 mb-lg-0">
-          <div class="card-body p-0">
-            <ul class="list-group list-group-flush rounded-3">
-              <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                <i class="bi bi-globe"></i>
-                <p class="mb-0">https://mdbootstrap.com</p>
-              </li>
-              <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                <i class="bi bi-github"></i>
-                <p class="mb-0">mdbootstrap</p>
-              </li>
-              <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                <i class="bi bi-twitter" style="color: #55acee;"></i>
-                <p class="mb-0">@mdbootstrap</p>
-              </li>
-              <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                <i class="bi bi-instagram" style="color: #ac2bac;"></i>
-                <p class="mb-0">mdbootstrap</p>
-              </li>
-              <li class="list-group-item d-flex justify-content-between align-items-center p-3">
-                <i class="bi bi-facebook" style="color: #3b5998;"></i>
-                <p class="mb-0">mdbootstrap</p>
-              </li>
-            </ul>
+          <div class="card-footer d-flex justify-content-center mb-2">
+            <a class="btn btn-primary d-flex align-items-center gap-2" href="<?=ROOT?>/profile/edit"><i class="bi bi-pencil-square"></i>Edit</a>
+            <a class="btn btn-danger ms-1 d-flex align-items-center gap-1" href="<?=ROOT?>/logout"><i class="bi bi-box-arrow-left"></i>Logout</a>
           </div>
         </div>
       </div>
-      <div class="col-lg-8">
-        <div class="card mb-4">
-          <div class="card-body">
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">Full Name</p>
-              </div>
-              <div class="col-sm-9">
-                <p class="text-muted mb-0">Johnatan Smith</p>
-              </div>
+      <div class="col-lg-6 card mb-4">
+        <div class="card-body">
+
+          <div class="row">
+            <div class="col-sm-3">
+              <p class="mb-0 fw-bold">Full Name</p>
             </div>
-            <hr>
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">Email</p>
-              </div>
-              <div class="col-sm-9">
-                <p class="text-muted mb-0">example@example.com</p>
-              </div>
-            </div>
-            <hr>
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">Number</p>
-              </div>
-              <div class="col-sm-9">
-                <p class="text-muted mb-0">(097) 234-5678</p>
-              </div>
-            </div>
-            <hr>
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">Country</p>
-              </div>
-              <div class="col-sm-9">
-                <p class="text-muted mb-0">safi</p>
-              </div>
-            </div>
-            <hr>
-            <div class="row">
-              <div class="col-sm-3">
-                <p class="mb-0">Address</p>
-              </div>
-              <div class="col-sm-9">
-                <p class="text-muted mb-0">Bay Area, San Francisco, CA</p>
-              </div>
+            <div class="col-sm-9">
+              <p class="text-muted mb-0"><?=$data['info']['full_name'] ?? '<i class="bi bi-dash-lg"></i>'?></p>
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="card mb-4 mb-md-0">
-              <div class="card-body">
-                <p class="mb-4"><span class="text-primary font-italic me-1">assigment</span> QCM
-                </p>
-                <p class="mb-1" style="font-size: .77rem;">Front End</p>
-                <div class="progress rounded" style="height: 5px;">
-                  <div class="progress-bar" role="progressbar" style="width: 5%" aria-valuenow="80"
-                    aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <p class="mt-4 mb-1" style="font-size: .77rem;">Website Markup</p>
-                <div class="progress rounded" style="height: 5px;">
-                  <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="72"
-                    aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <p class="mt-4 mb-1" style="font-size: .77rem;">One Page</p>
-                <div class="progress rounded" style="height: 5px;">
-                  <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="89"
-                    aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <p class="mt-4 mb-1" style="font-size: .77rem;">Mobile Template</p>
-                <div class="progress rounded" style="height: 5px;">
-                  <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="55"
-                    aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <p class="mt-4 mb-1" style="font-size: .77rem;">Backend API</p>
-                <div class="progress rounded mb-2" style="height: 5px;">
-                  <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="66"
-                    aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-              </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <p class="mb-0 fw-bold">Email</p>
+            </div>
+            <div class="col-sm-9">
+              <p class="text-muted mb-0"><?=$data['info']['email'] ?? '<i class="bi bi-dash-lg"></i>'?></p>
             </div>
           </div>
-          <div class="col-md-6">
-            <div class="card mb-4 mb-md-0">
-              <div class="card-body">
-                <p class="mb-4"><span class="text-primary font-italic me-1">assigment</span> Project Status
-                </p>
-                <p class="mb-1" style="font-size: .77rem;">Web Design</p>
-                <div class="progress rounded" style="height: 5px;">
-                  <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="80"
-                    aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <p class="mt-4 mb-1" style="font-size: .77rem;">Website Markup</p>
-                <div class="progress rounded" style="height: 5px;">
-                  <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="72"
-                    aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <p class="mt-4 mb-1" style="font-size: .77rem;">One Page</p>
-                <div class="progress rounded" style="height: 5px;">
-                  <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="89"
-                    aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <p class="mt-4 mb-1" style="font-size: .77rem;">Mobile Template</p>
-                <div class="progress rounded" style="height: 5px;">
-                  <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="55"
-                    aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <p class="mt-4 mb-1" style="font-size: .77rem;">Backend API</p>
-                <div class="progress rounded mb-2" style="height: 5px;">
-                  <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="66"
-                    aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-              </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <p class="mb-0 fw-bold">Number</p>
+            </div>
+            <div class="col-sm-9">
+              <p class="text-muted mb-0"><?=$data['info']['number'] ?? '<i class="bi bi-dash-lg"></i>'?></p>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <p class="mb-0 fw-bold">Country</p>
+            </div>
+            <div class="col-sm-9">
+              <p class="text-muted mb-0"><?=$data['info']['country'] ?? '<i class="bi bi-dash-lg"></i>'?></p>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <p class="mb-0 fw-bold">Address</p>
+            </div>
+            <div class="col-sm-9">
+              <p class="text-muted mb-0"><?=$data['info']['address'] ?? '<i class="bi bi-dash-lg"></i>'?></p>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-sm-3">
+              <p class="mb-0 fw-bold">Register Date</p>
+            </div>
+            <div class="col-sm-9">
+              <p class="text-muted mb-0"><?=$data['info']['register_date'] ?? '<i class="bi bi-dash-lg"></i>'?></p>
             </div>
           </div>
         </div>
       </div>
     </div>
+<!-- <?php show($data)?> -->
+    <div class="d-flex flex-wrap align-items-start gap-2">
+      <!-- Projects -->
+      <div class="card mb-4 mb-md-0">
+        <div class="card-header">
+          <h4 class="text-muted font-italic me-1">Projects</h4>
+        </div>
+        <div class="card-body">
+          <?php if (isset($data['info']['project'])) {?>
+
+            <a href="<?=$data['info']['project']?>" class="fs-5 d-block mb-2"><?=$data['info']['project']?></a>
+
+          <?php } else { ?>
+            <form action="" method="POST">
+
+              <label for="url" class="fw-bold">Project</label>
+              <input id="url" name="project" type="text" class="form-control" placeholder="Put URL"></input>
+              <div class="form-text text-danger mb-2" id="basic-addon4">Be carful And Put A Valid URL, That You Can't Change It</div>
+              
+              <label for="description" class="fw-bold">Description</label>
+              <textarea name="description" class="form-control" placeholder="Description Of Your Project" id="description"></textarea>
+              <button class="ms-auto mt-2 btn btn-primary d-flex align-items-center gap-2" type="submit">
+                <i class="bi bi-upload"></i>
+                <span>Add Project</span>
+              </button>
+            </form>
+          <?php }?>
+        </div>
+      </div>
+      
+      <!-- Qcm -->
+      <div class="card mb-4 mb-md-0">
+        <div class="card-header">
+          <h4 class="text-muted font-italic me-1">assigment QCM</h4>
+        </div>
+        <div class="card-body">
+          <?php if (isset($data['info']['result'])) {?>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="fs-5 fw-bold"><?=$data['info']['subject']?></span>
+              <span class="fs-5 fw-bold text-success"><?=$data['info']['result']?>/10</span>
+            </div>
+            <div class="progress position-relative" role="progressbar" aria-label="Example with label" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+              <div class="progress-bar" style="width: <?=$data['info']['result'] * 10?>%"></div>
+            </div>
+            
+          <?php } else { ?>
+
+            <span class="fs-5 d-block mb-2">Front End</span>
+            <a href="<?=ROOT?>/exercises" class="btn btn-primary">Go For Qcm</a>
+          <?php }?>
+          <hr>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
   <script src='<?=ROOT?>/assets/js/bootstrap.bundle.min.js'></script>

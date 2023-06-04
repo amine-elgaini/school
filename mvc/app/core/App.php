@@ -20,7 +20,6 @@ class App
 	public function loadController()
 	{
 		$URL = $this->splitURL();
-
 		/** select controller **/
 		$filename = "../app/controllers/".ucfirst($URL[0]).".php";
 		if(file_exists($filename))

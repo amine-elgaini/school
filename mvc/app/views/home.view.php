@@ -11,20 +11,57 @@
   <title>OFPPT Cover</title>
 </head>
   <body class="home">
+
     <?php require './../app/views/inc/nav.view.php'?>
     <div class="landing d-flex justify-content-evenly align-items-center">
-      <main class="text text-center">
+      <div class="content text text-center">
         <h1>Welcome To OFPPT</h1>
-        <p class="lead">Here You Will Learn Web Dev, With Our Cours, Execises and Some Adivices So You Can Find Your Job Easly</p>
+        <p class="lead fw-bold">Here You Will Learn Web Dev, With Our Cours, Execises and Some Adivices So You Can Find Your Job Easly</p>
         <p class="lead">
-          <a href="#" class="btn btn-secondary btn-lg fw-bold">Learn more</a>
+          <a href="<?=ROOT?>/cours" class="btn btn-primary btn-lg fw-bold">Start With Our Cours</a>
         </p>
 
-      </main>
-      <div class="d-none d-lg-block mb-5">
-        <img class="" src='<?=ROOT?>/assets/imgs/school.png'>
       </div>
     </div>
+
+    <?php if (isset($_SESSION['username'])) {?>
+      <div class="divider border"></div>
+      <section class="winners container py-5">
+        <h1 style="font-size:60px;white-space:nowrap;" class="fw-light text-center my-5">Top Three Winners</h1>
+        <div class="d-flex flex-wrap justify-content-center gap-4">
+
+          <?php
+          $prize = 0;
+          $prizeTrophy = ['prize1st', 'prize2st', 'prize3st'];
+          foreach($data['top3'] as $data) :
+            $img=$prizeTrophy[$prize++];
+          ?>
+            <div class="card position-relative m-5 <?=$prize == 1 ? 'bg-warning text-black' : null?>" style="max-width: 400px;">
+              <img style="max-width: 80px;left: -50px;transform:rotate(-40deg);" class="position-absolute" src="<?=ROOT?>/assets/imgs/<?=$img?>.png">
+              <div class="card-header d-flex align-items-center gap-3">
+                <img class="img-thumbnail" src="<?=ROOT?>/uploads/<?=$data['user_img']??'default_img.png'?>" class="rounded" style="width:50px;height:50px">
+                <p class="m-0 fs-5" >
+                  <?=$data['username']?><span class="fs-6">(<?=$data['full_name']?>)</span>
+                  <span class="text-primary fw-bold"><?=$data['vote_count']?>/Votes</span>
+                </p> 
+              </div>
+
+              <div class="card-body d-flex align-items-center" style="height:140px;overflow:auto;">
+                <?=$data['description_project'];?>
+              </div>
+
+              <div class="card-footer text-end">
+                <a class="btn btn-primary" href="<?=$data['project']?>">View</a>
+              </div>
+
+            </div>
+          <?php
+          endforeach;
+          ?>
+
+        </div>
+      </section>
+    <?php }?>
   
     <script src='<?=ROOT?>/assets/js/bootstrap.bundle.min.js'></script>
   </body>

@@ -3,21 +3,17 @@
 class Register
 {
 	use Controller;
-	/* 
-	user_id
-	username
-	name
-	email
-	password
-	groupe_id
-	register_date
-	user_img
-	work
-	*/
+
 	private $data = [];
 
   public function index() {
-		$user = new User();
+		// redirect if loged in
+		if (isset($_SESSION['username'])) {
+			header('Location: ' . ROOT . '/home');
+			exit();
+		}
+
+		$user = new LoginM();
 
 		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			$user->register($_POST);
@@ -25,8 +21,7 @@ class Register
 
 		$this->data['errors'] = $user->errors;
 		//it will be just one message
-		$this->data['registration'] = $user->success['registration'] ?? null;
-
+		$this->data['registration'] = $user->success;
 		$this->view('register', $this->data);
 	}
 

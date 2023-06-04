@@ -1,15 +1,16 @@
 <?php 
 
-/**
- * home class
- */
 class Home
 {
-	use Controller; //we inherit trait
+	use Controller;
+	public $data = [];
 
 	public function index()
 	{
-		$this->view('home');
+		$vote = new HomeM;
+		$vote->top3Condidates();
+		$data['top3'] = $vote->top3Condidates;
+		$this->view('home', $data);
 	}
 
 }

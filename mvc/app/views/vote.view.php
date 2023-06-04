@@ -10,49 +10,55 @@
   <link href="<?=ROOT?>/assets/css/style.css" rel="stylesheet">
   <title>OFPPT Cover</title>
 </head>
-  <body class="home">
+  <body class="vote">
     <?php require './../app/views/inc/nav.view.php'?>
-  
-    <section class="vh-100" style="background-color: #9de2ff;">
-      <div class="container py-5 h-100">
-        <div class="row d-flex justify-content-center align-items-center h-100">
-          <div class="col col-md-9 col-lg-7 col-xl-5">
-            <div class="card" style="border-radius: 15px;">
-              <div class="card-body p-4">
-                <div class="d-flex text-black">
-                  <div class="flex-shrink-0">
-                    <img src="./uploads/default_img.png"
-                      alt="Generic placeholder image" class="img-fluid"
-                      style="width: 180px; border-radius: 10px;">
-                  </div>
-                  <div class="flex-grow-1 ms-3">
-                    <h5 class="mb-1">Danny McLoan</h5>
-                    <p class="mb-2 pb-1" style="color: #2b2a2a;">Senior Journalist</p>
-                    <div class="d-flex justify-content-start rounded-3 p-2 mb-2"
-                      style="background-color: #efefef;">
-                      <div>
-                        <p class="small text-muted mb-1">Articles</p>
-                        <p class="mb-0">41</p>
-                      </div>
-                      <div class="px-3">
-                        <p class="small text-muted mb-1">Followers</p>
-                        <p class="mb-0">976</p>
-                      </div>
-                      <div>
-                        <p class="small text-muted mb-1">Rating</p>
-                        <p class="mb-0">8.5</p>
-                      </div>
-                    </div>
-                    <div class="d-flex pt-1">
-                      <button type="button" class="btn btn-outline-primary me-1 flex-grow-1">Chat</button>
-                      <button type="button" class="btn btn-primary flex-grow-1">Follow</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
+    <section style="padding: 90px 0;" class="position-relative">
+      <!-- show if this user voted before -->
+      <?php if ($data['didVote']) :?>
+        <div class="position-absolute z-1 top-0 end-0 me-4 toast align-items-center text-bg-info border-0 fade show" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="d-flex">
+            <div class="toast-body fs-5">
+            <i class="bi bi-info-circle "></i> Hi <?=$_SESSION['username']?>, You Already Voted You Can't Vote Again!
             </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
           </div>
         </div>
+      <?php endif; ?>
+      <div class="container d-flex flex-wrap justify-content-center gap-4">
+
+        <?php
+        foreach($data['candidates'] as $candidate) :
+        ?>
+        <div class="card" style="max-width: 400px;">
+          <div class="card-header d-flex align-items-center gap-3">
+            <img src="<?=ROOT?>/uploads/default_img.png" class="rounded" style="width:50px;height:50px">
+            <p class="m-0 fs-5" >
+              <?=$candidate['username']?><span class="fs-6">(<?=$candidate['full_name']?>)</span>
+              <span class="text-primary fw-bold"><?=$candidate['vote_count']?>/Votes</span>
+            </p> 
+          </div>
+
+          <div class="card-body">
+            I built A School Website. Using Html, Css, Js. I tried Also To Make It Responsive On Pc And Phones And Other Devices
+          </div>
+
+          <div class="card-footer d-flex justify-content-end align-items-center gap-2">
+            <?=isset($data['didVote']['voteOn']) && $data['didVote']['voteOn'] === $candidate['user_id']?'<i class="fs-3 me-auto text-success bi bi-check-circle-fill"></i>':'<i class="fs-3 me-auto bi bi-check-circle"></i>'?>
+            <?php if (!isset($data['didVote']['voteOn'])) {?>
+              <a style="width:fit-content" class="btn btn-success d-flex align-items-center gap-1" href="<?=ROOT?>/vote/voted?candidate=<?=$candidate['user_id']?>">
+                <i class="bi bi-check2"></i><span>Vote</span>
+              </a>
+            <?php }?>
+            <a style="width:fit-content" class="btn btn-primary d-flex align-items-center gap-1" href="<?=$candidate['project']?>">
+              <i class="bi bi-eye"></i><span>View</span>
+            </a>
+          </div>
+
+        </div>
+        <?php
+        endforeach;
+        ?>
+
       </div>
     </section>
 

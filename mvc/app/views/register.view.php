@@ -59,9 +59,9 @@
                         }
                       echo '</div>';
                     }
-                    if(!empty($data['registration'])) {
+                    if(!empty($data['registration']['registration'])) {
                       echo '<div class="text-center success alert alert-success mt-2">';
-                          echo "<p>- {$data['registration']}</p>";
+                          echo "<p>- {$data['registration']['registration']}</p>";
                       echo '</div>';
                     }
                   ?>

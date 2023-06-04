@@ -28,3 +28,19 @@ function formatSizeUnits($bytes) {
 	}
 	return $bytes;
 }
+
+/* 
+check if url exist
+*/
+function checkUrlExist($url) {
+	if (!empty($url)) {
+		// Use get_headers() function
+		$headers = @get_headers($url);
+	
+		// Use condition to check the existence of URL
+		if($headers && strpos( $headers[0], '200')) {
+			return true;
+		}
+	}
+	return false;
+}

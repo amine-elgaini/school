@@ -1,8 +1,5 @@
 <?php 
 
-/**
- * home class
- */
 class Cours
 {
 	use Controller;

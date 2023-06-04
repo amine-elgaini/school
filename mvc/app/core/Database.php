@@ -28,8 +28,7 @@ Trait Database {
 		$con = $this->connect();
 		$stm = $con->prepare($query);
 		$stm->execute(array_values($data));
-		
-    //choose between fetch or rowCount...
+    // choose between fetch or rowCount...
     $actions = ['fetch', 'fetchAll', 'rowCount'];
     if (in_array($action, $actions)) {
       return $stm->$action();
