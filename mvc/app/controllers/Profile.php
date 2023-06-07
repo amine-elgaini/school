@@ -7,24 +7,31 @@ class Profile
 	public $data = [];
 
 	public function index() {
-		$user = new ProfileM;
-
-		//add project
-		if (isset($_POST['project'])) {
-			$user->addProject($_SESSION['user_id'], $_POST);
-		}
+		if (isset($_SESSION['username'])) {
+			$user = new ProfileM;
+	
+			//add project
+			if (isset($_POST['project'])) {
+				$user->addProject($_SESSION['user_id'], $_POST);
+			}
+				
+			// //Get Current Data
+			$user->getProfile($_SESSION['user_id']);
 			
-		// //Get Current Data
-		$user->getProfile($_SESSION['user_id']);
-		
-		// // Push Info To Data
-		$this->data['info'] = $user->userData;
-		$this->data['success'] = $user->success;
-		$this->data['errors'] = $user->errors;
-		$this->view('profile', $this->data);
+			// // Push Info To Data
+			$this->data['info'] = $user->userData;
+			$this->data['blogs'] = $user->getUserBlogs();
+			$this->data['success'] = $user->success;
+			$this->data['errors'] = $user->errors;
+			$this->view('profile', $this->data);
+		} else {
+			header('Location: '.ROOT.'\login');
+			exit;
+		}
 	}
 
 	public function edit() {
+	if (isset($_SESSION['username'])) {
 		$user = new ProfileM;
 		
 		//Update Current Data
@@ -45,6 +52,10 @@ class Profile
 		$this->data['errors'] = $user->errors;
 
 		$this->view('editProfile', $this->data);
+	} else {
+		header('Location: '.ROOT.'\login');
+		exit;
+	}
 	}
 
 }

@@ -27,7 +27,7 @@ fetch("http://localhost/dev/mvc/app/files/qcm.json")
 
 // add current questions bullets and submit
 function change_footer(question_num) {
-  footer_element.innerHTML = '<button class="submit btn btn-primary">Submit Answear</button>';
+  footer_element.innerHTML = '<button class="submit btn btn-primary">Next</button>';
 }
 
 // create current question

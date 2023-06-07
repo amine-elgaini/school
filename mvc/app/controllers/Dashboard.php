@@ -93,4 +93,30 @@ class Dashboard
 		}
 	}
 
+	public function approveArticle() {
+		$admin = new DashboardM;
+		if ($admin->isAdmin()) {
+			
+			$blog = new BlogM;
+
+			// add approve article
+			$blog_id = intval($_GET['blog'] ?? 0) ? $_GET['blog'] : 0;
+			if ($blog->blogExist($blog_id )) {
+				$blog->approveBlog($blog_id);
+			}
+
+			// show articles
+			$this->data['blogs'] = $blog->getAllBlogs();
+			
+			// Push Info To Data
+			$this->data['success'] = $blog->success;
+			$this->data['errors'] = $blog->errors;
+
+			$this->view('approveArticle', $this->data);
+		} else {
+			header("Location: " . ROOT . "/Home");
+			exit();
+		}
+	}
+
 }

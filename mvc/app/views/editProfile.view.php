@@ -30,18 +30,18 @@
                     </div>
                   </div>
                   <div class="col-md-6">
-                    <label for="inputPassword4" class="form-label fw-bold">Password</label>
+                    <label for="inputPassword4" class="form-label fw-bold">Mot De Passe</label>
                     <input type="password" name="password" class="form-control" id="inputPassword4" placeholder="leave it empty to not change">
                   </div>
                   <div class="col-md-6">
-                    <label for="inputAddress" class="form-label fw-bold">Address</label>
+                    <label for="inputAddress" class="form-label fw-bold">Addresse</label>
                     <input type="text" name="address" value="<?=$data['info']['address']?>" class="form-control" id="inputAddress" placeholder="1234 Main St">
                   </div>
                   <div class="col-md-6">
-                    <label for="inputUsername" class="form-label fw-bold">Username</label>
+                    <label for="inputUsername" class="form-label fw-bold">Nom Utilisateur</label>
                     <input type="text" name="username" value="<?=$data['info']['username']?>" class="form-control" id="inputUsername" pattern="[a-zA-Z0-9]{5,}" required>
                     <div class="invalid-feedback">
-                      Username should be greater than 4 caracteres
+                      Nom Utilisateur Doit Etre Plus De 4 caracteres
                     </div>
                   </div>
                   <div class="col-md-6">
@@ -53,15 +53,15 @@
                     <input type="file" name="imageProfile" class="form-control" id="inputImageProfile">
                   </div>
                   <div class="col-md-4">
-                    <label for="inputFullName" class="form-label fw-bold">Full Name</label>
+                    <label for="inputFullName" class="form-label fw-bold">Nom Et Prenom</label>
                     <input type="text" name="FullName" value="<?=$data['info']['full_name']?>" class="form-control" id="inputCountry">
                   </div>
                   <div class="col-md-4">
-                    <label for="inputCountry" class="form-label fw-bold">Country</label>
+                    <label for="inputCountry" class="form-label fw-bold">pays</label>
                     <input type="text" name="country" value="<?=$data['info']['country']?>" class="form-control" id="inputCountry">
                   </div>
                   <div class="col-md-4">
-                    <label for="inputWork" class="form-label fw-bold">speciality</label>
+                    <label for="inputWork" class="form-label fw-bold">filier</label>
                     <select name="speciality_id" id="inputWork" class="form-select">
                       <option value='0'>Noting</option>
                       <?php
@@ -73,11 +73,11 @@
                     </select>
                   </div>
                   <div class="col-md-4">
-                    <label for="inputNumber" class="form-label fw-bold">number</label>
+                    <label for="inputNumber" class="form-label fw-bold">nombre</label>
                     <input type="number" name="number" value="<?=$data['info']['number']?>" class="form-control" id="inputNumber">
                   </div>
                   <div class="col-12">
-                    <button type="submit" class="btn btn-primary">Update</button>
+                    <button type="submit" class="btn btn-primary">Modifier</button>
                   </div>
                 </form>
 

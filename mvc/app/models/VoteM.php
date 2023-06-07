@@ -26,12 +26,12 @@ class VoteM {
 	}
 
 	// Start Updates
-	function didVoteBefore($voter) {
-		$didVoteBefore = $this->selectInfo('*', 'users', ['user_id'=>$voter], ['voteOn'=>0], $action='rowCount') ? true : false;
+	function didVoteBefore() {
+		$didVoteBefore = $this->selectInfo('*', 'users', ['user_id'=>$_SESSION['user_id']], ['voteOn'=>0], $action='rowCount') ? true : false;
 		return $didVoteBefore;
 	}
 
-	public function addVote($voter, $candidate) {
+	public function addVote($candidate) {
 		$vote = $this->selectInfo('vote_count', 'votes', ['candidate'=>$candidate], [], $action='fetch')['vote_count'] ?? 0;
 		$voteUpdate = $vote + 1;
 		$this->updateInfo('votes', ['vote_count'=>$voteUpdate], ['candidate'=>$candidate]);

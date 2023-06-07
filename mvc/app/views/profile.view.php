@@ -12,7 +12,7 @@
 </head>
 <body class="home h-100">
   <?php require './../app/views/inc/nav.view.php'?>
-<section class="position-relative" style="background-color: #eee;">
+<section class="position-relative">
   <!-- show If Project Added -->
   <?php if (isset($data['errors'][0])) :?>
     <div class="position-fixed z-1 top-0 mt-3 end-0 me-4 opacity-75 toast align-items-center text-bg-danger border-0 fade show" role="alert" aria-live="assertive" aria-atomic="true">
@@ -120,7 +120,6 @@
         </div>
       </div>
     </div>
-<!-- <?php show($data)?> -->
     <div class="d-flex flex-wrap align-items-start gap-2">
       <!-- Projects -->
       <div class="card mb-4 mb-md-0">
@@ -150,8 +149,34 @@
         </div>
       </div>
       
+      <!-- Blogs -->
+      <div style="min-width:280px" class="card mb-4 mb-md-0">
+        <div class="card-header">
+          <h4 class="text-muted font-italic me-1">My Blogs</h4>
+        </div>
+        <div style="max-height:240px;overflow:auto" class="blogs card-body">
+          <?php foreach($data['blogs'] as $blog) {?>
+            <div class="blog d-flex align-items-center justify-content-between gap-1">
+              <span class='fw-bold text-primary'><?=$blog['title']?></span>
+              <a href="<?=ROOT?>/blog/read/blog=<?=$blog['blog_id']?>"><i class="fs-4 text-success bi bi-eye"></i></a>
+            </div>
+            <div class="pb-0">
+              <small class="fst-italic ms-2"><?=date('M j Y', strtotime($blog['blog_date']))?></small>
+              <small class="likes fst-italic"><i class="ms-4 fs-5 text-danger bi bi-heart-fill"></i> <?=$blog['like_count']?></small>
+            </div>
+            <hr class="m-0">
+          <?php } ?>
+        </div>
+        <div class="card-footer">
+          <a href="<?=ROOT?>/blog/add" class="mt-2 btn btn-primary d-flex align-items-center gap-2">
+            <i class="bi bi-plus-lg"></i>
+            <span>Add Blog</span>
+          </a>
+        </div>
+      </div>
+
       <!-- Qcm -->
-      <div class="card mb-4 mb-md-0">
+      <div style="min-width:280px" class="card mb-4 mb-md-0">
         <div class="card-header">
           <h4 class="text-muted font-italic me-1">assigment QCM</h4>
         </div>
@@ -173,6 +198,8 @@
           <hr>
         </div>
       </div>
+
+
     </div>
 
   </div>

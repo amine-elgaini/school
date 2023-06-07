@@ -15,6 +15,10 @@ li {
 img {
   max-width: 100%;
 }
+
+table tr th {
+  white-space: nowrap;
+}
 /* End Global Rules */
 
 
@@ -69,3 +73,29 @@ img {
   width: 80px;
 }
 /* End Logo */
+
+/* Start Blog */
+.blog .landing {
+  position: relative;
+  background-image: url("./../imgs/blog_background.jpg");
+  background-position: top 40% center;
+  background-size: cover;
+  color: white;
+}
+
+.blog .landing::after{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #1f2a30;
+  opacity: .5;
+}
+
+.blog .landing .content {
+  position: relative;
+  z-index: 1;
+}
+/* End Blog */

@@ -10,22 +10,22 @@
 
     <!-- Right -->
     <div>
-      <a href="" class="me-4 text-reset">
+      <a class="me-4 text-reset">
         <i class="bi bi-facebook-f"></i>
       </a>
-      <a href="" class="me-4 text-reset">
+      <a class="me-4 text-reset">
         <i class="bi bi-twitter"></i>
       </a>
-      <a href="" class="me-4 text-reset">
+      <a class="me-4 text-reset">
         <i class="bi bi-google"></i>
       </a>
-      <a href="" class="me-4 text-reset">
+      <a class="me-4 text-reset">
         <i class="bi bi-instagram"></i>
       </a>
-      <a href="" class="me-4 text-reset">
+      <a class="me-4 text-reset">
         <i class="bi bi-linkedin"></i>
       </a>
-      <a href="" class="me-4 text-reset">
+      <a class="me-4 text-reset">
         <i class="bi bi-github"></i>
       </a>
     </div>
@@ -38,18 +38,6 @@
     <div class="container text-center text-md-start mt-5">
       <!-- Grid row -->
       <div class="row mt-3">
-        <!-- Grid column -->
-        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-          <!-- Content -->
-          <h6 class="text-uppercase fw-bold mb-4">
-            <i class="fas fa-gem me-3"></i>OFPPT
-          </h6>
-          <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptate fugiat dolor modi aliquam unde, magni at cupiditate, ex,
-          </p>
-        </div>
-        <!-- Grid column -->
-
         <!-- Grid column -->
         <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
           <!-- Links -->
@@ -75,19 +63,19 @@
         <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
           <!-- Links -->
           <h6 class="text-uppercase fw-bold mb-4">
-            Useful links
+            Pages
           </h6>
           <p>
-            <a href="#!" class="text-reset">Pricing</a>
+            <a href="<?=ROOT?>/politique" class="text-reset">Mission Et Politique</a>
           </p>
           <p>
-            <a href="#!" class="text-reset">Settings</a>
+            <a href="<?=ROOT?>/contact" class="text-reset">Contact</a>
           </p>
           <p>
-            <a href="#!" class="text-reset">Orders</a>
+            <a href="<?=ROOT?>/blog" class="text-reset">Blog</a>
           </p>
           <p>
-            <a href="#!" class="text-reset">Help</a>
+            <a href="<?=ROOT?>/profile" class="text-reset">Profile</a>
           </p>
         </div>
         <!-- Grid column -->

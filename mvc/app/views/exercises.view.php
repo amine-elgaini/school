@@ -23,16 +23,16 @@
             <div class="the_test card shadow-lg">
 
               <div class="<?=isset($data['note'])?'d-none':null?> card-header d-flex justify-content-between fw-bold">
-                <div>Category: <span class="text-primary category"><?=$data['subject']?></span></div>
+                <div>Categorie: <span class="text-primary category"><?=$data['subject']?></span></div>
                 |
-                <div>Questions Num: <span class="text-primary question_num">?</span></div>
+                <div>Question Num: <span class="text-primary question_num">?</span></div>
               </div> 
               
               <div class="card-body" style="height:45vh;">
                 <!-- This erea it will be questions -->
                 <?php
                 if (!isset($data['note'])) {
-                  echo "<img class='d-block h-100 m-auto img-fluid' src='".ROOT."/assets/imgs/problem_solving.png'>";
+                  echo "<img class='d-block h-100 m-auto img-fluid' src='".ROOT."/assets/imgs/problem_solving.svg'>";
                 } else {
                   echo '<p class="h-100 d-flex justify-content-center align-items-center text-success fw-bold" style="font-size: 70px;">'.$data['note'].'/10</p>';
                 }?>

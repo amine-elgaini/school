@@ -39,10 +39,16 @@ class ProfileM {
 		return $this->userData;
 	}
 
-	//problem here
 	public function getSpecialties() {
 		$this->getSpecialties = $this->selectInfo('*', 'specialties');
 		return $this->getSpecialties;
+	}
+
+	public function getUserBlogs() {
+		$join = "FROM users u INNER JOIN blog b on b.author = u.user_id";
+		$select = 'b.blog_id, b.blog_date, b.title, b.like_count';
+		$blog = $this->joinTables($select, $join, ['author'=>$_SESSION['user_id']], [], 'fetchAll');
+		return $blog;
 	}
 	
 	// validation updates

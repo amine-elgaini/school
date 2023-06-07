@@ -1,31 +1,15 @@
 <!doctype html>
 <html lang="en" data-bs-theme="auto">
   <head>
-    <script src="<?=ROOT?>/assets/js/color-modes.js"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.111.3">
     <title>OFPPT Cours</title>
-    <link href="<?=ROOT?>/assets/css/bootstrap.min.css" rel="stylesheet">    
+    <script src="<?=ROOT?>/assets/js/color-modes.js"></script>
+    <link href="<?=ROOT?>/assets/css/bootstrap.min.css" rel="stylesheet"> 
+    <link href="<?=ROOT?>/assets/icons/font/bootstrap-icons.css" rel="stylesheet">
     <link href="<?=ROOT?>/assets/css/style.css" rel="stylesheet">    
-
-    <style>
-      .bd-placeholder-img { 
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-    </style>
 
   </head>
   <body>
@@ -35,9 +19,9 @@
       <section class="py-5 text-center container">
         <div class="row py-lg-5">
           <div class="col-lg-6 col-md-8 mx-auto">
-            <h1 class="fw-light">JAVASCRIPT FUNDAMENTAL</h1>
+            <h1 class="fw-light">LES PRINCIPE DE JAVASCRIPT</h1>
             <p class="lead text-body-secondary">
-              From [1-30] you will learn fundamentals like (variables, function...), after that there's advanced concept like (api, promis, asychronos...)
+              De [1-30] Tu Vas Apprendre (variables, function...), Apres Ca Tu Vas Voir (api, promis, asychronos...)
             </p>
             <a href="./exercises" class="fs-5 btn btn-success my-2">exercises On Javascript</a>
           </div>

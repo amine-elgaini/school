@@ -20,7 +20,7 @@ class LoginM {
 		$this->validateLogin(['username'=>$data['username'], 'password'=>$_POST['password']]);
 		$user = $this->selectInfo('*', 'users', ['username'=>$data['username'], 'password'=>sha1($data['password'])], [], 'fetch');
 		if (!$user) {
-			$this->errors[] = 'User Do Not Exist';
+			$this->errors[] = 'Sorry, Wrong Login';
 		}
 		// Go To HomePage if user exist
 		if(empty($this->errors) && $user) {

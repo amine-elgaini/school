@@ -11,7 +11,7 @@ class Vote
 			$vote = new VoteM;
 			$vote->getCandidates();
 			$this->data['candidates'] = $vote->candidates;
-			$didVtedBefore = $vote->didVoteBefore($_SESSION['user_id']);
+			$didVtedBefore = $vote->didVoteBefore();
 
 			$this->data['didVote'] = false;
 			if ($didVtedBefore) {
@@ -26,9 +26,9 @@ class Vote
 
 	public function voted() {
 		$vote = new VoteM;
-		$didVtedBefore = $vote->didVoteBefore($_SESSION['user_id']);
+		$didVtedBefore = $vote->didVoteBefore();
 		if (!$didVtedBefore) {
-			$vote->addVote($_SESSION['user_id'], $_GET['candidate']);
+			$vote->addVote($_GET['candidate']);
 		}
 		header("Location: " . ROOT . "/vote");
 		exit();

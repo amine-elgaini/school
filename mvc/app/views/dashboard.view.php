@@ -38,22 +38,24 @@
           </div>
         </div>
       <?php endif; ?>
-      
-      <a style="width:fit-content" href="<?=ROOT?>/dashboard/add" class="mb-3 btn btn-primary d-flex align-items-center gap-2"><i class="bi bi-plus-lg"></i>Add User</a>
+      <div class="ms-5 d-flex gap-2">
+        <a href="<?=ROOT?>/dashboard/add" class="mb-3 btn btn-primary d-flex align-items-center gap-2"><i class="bi bi-plus-lg"></i>Ajoute User</a>
+        <a href="<?=ROOT?>/dashboard/approveArticle" class="mb-3 btn btn-warning d-flex align-items-center gap-2"><i class="bi bi-check2"></i>Approuve Blogs</a>
+      </div>
       <div class="shadow-lg rounded-4 p-4" style="overflow:auto; max-height:800px">
         <table class="table table-hover">
           <thead>
             <tr>
-              <th scope="col">ID</th>
-              <th scope="col">Username</th>
-              <th scope="col">fullName</th>
+              <th scope="col">CEF</th>
+              <th scope="col">Nom Utilisateur</th>
+              <th scope="col">Nom Et Prenom</th>
               <th scope="col">Email</th>
               <th scope="col">Filier</th>
               <th scope="col">register_date</th>
-              <th scope="col">address</th>
-              <th scope="col">number</th>
+              <th scope="col">addresse</th>
+              <th scope="col">nombre</th>
               <th scope="col">description</th>
-              <th scope="col">note<span class="text-muted opacity-50 fst-italic">/10</span></th>
+              <th scope="col">Resultat<span class="text-muted opacity-50 fst-italic">/10</span></th>
               <th scope="col"></th>
             </tr>
           </thead>
@@ -84,6 +86,5 @@
   </section>
   
     <script src='<?=ROOT?>/assets/js/bootstrap.bundle.min.js'></script>
-  </body>
   </body>
 </html>
